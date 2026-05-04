@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AZ Foodstuff Impex Pvt. Ltd.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --g1:#1a3c2e;--g2:#2d6a4f;--g3:#40916c;--g4:#74c69d;--g5:#b7e4c7;
+  --gold:#d4a017;--gold2:#e9b44c;--gold3:#f4d06f;
+  --cream:#fdf8f0;--cream2:#f9f4ea;--warm:#fff9f0;
+  --text:#1a1a18;--text2:#3d3c38;--text3:#6b6a64;
+  --border:rgba(26,60,46,0.12);
+  --ff:'Playfair Display',Georgia,serif;
+  --fs:'DM Sans',system-ui,sans-serif;
+  --ease-luxury:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fs);background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* LUXURY SCROLL PROGRESS */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--g3),var(--gold2));
+  z-index:999;transition:width 0.1s linear;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 5vw;display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+  background:rgba(253,248,240,0);
+  backdrop-filter:blur(0px);
+  border-bottom:1px solid transparent;
+  transition:background 0.5s var(--ease-luxury),backdrop-filter 0.5s,border-color 0.5s,box-shadow 0.5s;
+}
+nav.scrolled{
+  background:rgba(253,248,240,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom-color:var(--border);
+  box-shadow:0 2px 32px rgba(26,60,46,0.08);
+}
+.nav-logo{display:flex;align-items:center;gap:0;text-decoration:none;}
+.nav-logo img{height:56px;width:auto;display:block;object-fit:contain;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{
+  text-decoration:none;font-size:13.5px;color:var(--text2);font-weight:500;letter-spacing:0.02em;
+  position:relative;padding-bottom:2px;
+  transition:color 0.25s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--g3);transition:width 0.3s var(--ease-luxury);
+}
+.nav-links a:hover{color:var(--g2);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 20px;border-radius:100px;
+  font-family:var(--fs);font-size:13px;font-weight:600;
+  cursor:pointer;text-decoration:none;border:none;
+  transition:all 0.3s var(--ease-luxury);
+}
+.btn-primary{background:var(--g1);color:#fff;}
+.btn-primary:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,60,46,0.25);}
+.btn-gold{background:var(--gold2);color:var(--g1);}
+.btn-gold:hover{background:var(--gold3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,0.3);}
+.btn-outline{background:transparent;color:var(--g1);border:1.5px solid var(--g2);}
+.btn-outline:hover{background:var(--g5);transform:translateY(-2px);}
+.btn-wa{background:#25d366;color:#fff;}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.35);}
+
+/* HERO */
+#hero{
+  --hero-t:0;
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--g1) 0%,#14503d 55%,#0d3b2c 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:100px 5vw 60px;
+}
+#hero::after{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,transparent 45%,rgba(13,59,44,calc(0.24 * var(--hero-t))) 100%);
+}
+@media (prefers-reduced-motion: reduce){
+  #hero{--hero-t:0 !important;}
+}
+.hero-bg-circles{
+  position:absolute;inset:0;pointer-events:none;
+  transform:translate3d(0,calc(var(--hero-t) * 42px),0);
+  opacity:calc(1 - var(--hero-t) * 0.11);
+  will-change:transform,opacity;
+}
+.hero-circle{position:absolute;border-radius:50%;opacity:0.06;background:var(--gold2);}
+.hero-circle:nth-child(1){width:500px;height:500px;top:-100px;right:-100px;animation:drift1 14s ease-in-out infinite;}
+.hero-circle:nth-child(2){width:320px;height:320px;bottom:-100px;left:5%;animation:drift2 18s ease-in-out infinite;}
+.hero-circle:nth-child(3){width:200px;height:200px;top:35%;right:22%;background:var(--g4);opacity:0.1;animation:drift3 11s ease-in-out infinite;}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-28px,18px) scale(1.04);}}
+@keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-26px);}}
+@keyframes drift3{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-12px,14px) rotate(12deg);}}
+.hero-content{
+  position:relative;z-index:2;max-width:620px;
+  opacity:calc(1 - var(--hero-t) * 0.05);
+}
+.hero-content > .hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  transform:translate3d(0,calc(var(--hero-t) * -12px),0);
+  opacity:calc(1 - var(--hero-t) * 0.06);
+  will-change:transform,opacity;
+}
+.hero-badge{
+  background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.3);
+  padding:6px 16px;border-radius:100px;margin-bottom:28px;
+  font-size:12px;font-weight:600;color:var(--gold3);letter-spacing:calc(0.08em + var(--hero-t) * 0.04em);text-transform:uppercase;
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);animation:pulsedot 2s ease-in-out infinite;}
+@keyframes pulsedot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}
+.hero-content > .hero-h1{
+  transform:translate3d(0,calc(var(--hero-t) * -28px),0);
+  opacity:calc(1 - var(--hero-t) * 0.08);
+  letter-spacing:calc(var(--hero-t) * 0.028em);
+  text-shadow:0 calc(var(--hero-t) * 10px) calc(var(--hero-t) * 36px) rgba(0,0,0,calc(var(--hero-t) * 0.35));
+  will-change:transform,opacity;
+}
+.hero-h1{font-family:var(--ff);font-size:clamp(34px,5.5vw,60px);color:#fff;line-height:1.12;margin-bottom:22px;}
+.hero-h1 em{color:var(--gold2);font-style:italic;}
+.hero-word{display:inline-block;transition:opacity 0.4s,transform 0.4s;}
+.hero-content > .hero-p{
+  transform:translate3d(0,calc(var(--hero-t) * -42px),0);
+  opacity:calc(1 - var(--hero-t) * 0.1);
+  will-change:transform,opacity;
+}
+.hero-p{font-size:16px;color:rgba(255,255,255,0.68);line-height:1.82;max-width:460px;margin-bottom:34px;}
+.hero-content > .hero-actions{
+  transform:translate3d(0,calc(var(--hero-t) * -54px),0);
+  opacity:calc(1 - var(--hero-t) * 0.11);
+  will-change:transform,opacity;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+.hero-content > .hero-stats{
+  transform:translate3d(0,calc(var(--hero-t) * -66px),0);
+  opacity:calc(1 - var(--hero-t) * 0.12);
+  will-change:transform,opacity;
+}
+.hero-stats{display:flex;gap:0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;flex-wrap:wrap;}
+.hero-stat{padding:20px 28px;flex:1;min-width:100px;}
+.hero-stat+.hero-stat{border-left:1px solid rgba(255,255,255,0.08);}
+.hero-stat-num{font-family:var(--ff);font-size:26px;color:var(--gold2);font-weight:700;}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px;line-height:1.4;}
+.hero-img-side{
+  position:absolute;right:5vw;top:50%;
+  transform:translate3d(0,calc(-50% + var(--hero-t) * 38px),0);
+  width:clamp(260px,33vw,440px);z-index:2;
+  will-change:transform;
+}
+.hero-img-box{
+  width:100%;aspect-ratio:4/5;border-radius:24px;
+  background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;position:relative;overflow:hidden;
+  transform:scale(calc(1 - var(--hero-t) * 0.032)) translateZ(0);
+  box-shadow:0 calc(12px + var(--hero-t) * 24px) calc(48px + var(--hero-t) * 28px) rgba(0,0,0,calc(0.16 + var(--hero-t) * 0.1));
+  will-change:transform,box-shadow;
+}
+.hero-img-box .hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 42%;
+  transform:scale(calc(1 + var(--hero-t) * 0.048)) translateZ(0);
+  will-change:transform;
+}
+.hero-placeholder-text{color:rgba(255,255,255,0.38);font-size:13px;text-align:center;padding:24px;line-height:1.7;}
+.floating-chip{
+  position:absolute;background:rgba(253,248,240,0.97);border-radius:12px;
+  padding:10px 16px;display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.14);font-size:13px;font-weight:600;color:var(--g1);
+}
+.floating-chip.c1{bottom:24px;left:-20px;animation:floatchip1 4s ease-in-out infinite;}
+.floating-chip.c2{top:24px;right:-16px;animation:floatchip2 5.5s ease-in-out infinite;}
+@keyframes floatchip1{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+@keyframes floatchip2{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
+
+/* SECTIONS */
+section{padding:90px 5vw;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g3);margin-bottom:12px;}
+.section-title{font-family:var(--ff);font-size:clamp(26px,4vw,40px);color:var(--g1);line-height:1.18;margin-bottom:16px;}
+.section-title em{color:var(--g2);font-style:italic;}
+.section-sub{font-size:15px;color:var(--text3);max-width:520px;line-height:1.82;}
+.section-header{margin-bottom:52px;}
+.section-header.center{text-align:center;}
+.section-header.center .section-sub{margin:0 auto;}
+
+/* ABOUT */
+#about{background:var(--cream2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-img{
+  aspect-ratio:4/5;border-radius:24px;
+  background:linear-gradient(135deg,var(--g5) 0%,var(--g4) 100%);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-img .about-photo{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  animation:aboutPhotoIn 0.65s ease-out forwards;
+}
+@keyframes aboutPhotoIn{
+  from{opacity:0;transform:scale(1.04);}
+  to{opacity:1;transform:scale(1);}
+}
+.about-badge{
+  position:absolute;bottom:24px;left:24px;right:24px;z-index:2;
+  background:var(--g1);color:#fff;border-radius:14px;padding:16px 20px;
+  display:flex;align-items:center;gap:14px;
+}
+.about-badge-num{font-family:var(--ff);font-size:24px;color:var(--gold2);}
+.about-badge-text{font-size:13px;color:rgba(255,255,255,0.65);}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+.about-value{
+  background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;
+  transition:all 0.35s var(--ease-luxury);cursor:default;
+}
+.about-value:hover{border-color:var(--g4);box-shadow:0 8px 24px rgba(64,145,108,0.1);transform:translateY(-3px);}
+.about-value-icon{font-size:20px;margin-bottom:8px;}
+.about-value-title{font-size:14px;font-weight:600;color:var(--g1);margin-bottom:4px;}
+.about-value-desc{font-size:12.5px;color:var(--text3);line-height:1.55;}
+
+/* STATS */
+#stats{background:var(--g1);padding:70px 5vw;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;}
+.stat-cell{background:rgba(255,255,255,0.03);padding:40px 28px;text-align:center;transition:background 0.3s;}
+.stat-cell:hover{background:rgba(255,255,255,0.08);}
+.stat-num{font-family:var(--ff);font-size:46px;color:var(--gold2);line-height:1;margin-bottom:8px;}
+.stat-label{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+
+/* PRODUCTS */
+#products{background:var(--warm);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.product-card{
+  border-radius:20px;overflow:hidden;
+  background:#fff;border:1px solid var(--border);
+  transition:transform 0.4s var(--ease-luxury),box-shadow 0.4s var(--ease-luxury),border-color 0.3s;
+  cursor:pointer;
+}
+.product-card:hover{transform:translateY(-10px);box-shadow:0 24px 56px rgba(26,60,46,0.13);border-color:var(--g4);}
+.product-img{height:190px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:60px;transition:transform 0.5s var(--ease-luxury);}
+.product-card:hover .product-img{transform:scale(1.04);}
+.product-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,60,46,0.45),transparent);}
+.product-tag{position:absolute;top:14px;left:14px;background:var(--gold2);color:var(--g1);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+.product-body{padding:20px 22px 24px;}
+.product-name{font-family:var(--ff);font-size:20px;color:var(--g1);margin-bottom:6px;}
+.product-desc{font-size:13px;color:var(--text3);line-height:1.65;margin-bottom:14px;}
+.product-varieties{display:flex;flex-wrap:wrap;gap:6px;}
+.product-variety{background:var(--g5);color:var(--g2);font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;transition:background 0.2s,color 0.2s;}
+.product-card:hover .product-variety{background:var(--g4);color:var(--g1);}
+.products-grid .product-card:nth-child(1) .product-img{background:linear-gradient(135deg,#fef3e2,#fde68a);}
+.products-grid .product-card:nth-child(2) .product-img{background:linear-gradient(135deg,#d1fae5,#6ee7b7);}
+.products-grid .product-card:nth-child(3) .product-img{background:linear-gradient(135deg,#fef9c3,#fde047);}
+.products-grid .product-card:nth-child(4) .product-img{background:linear-gradient(135deg,#dcfce7,#4ade80);}
+.products-grid .product-card:nth-child(5) .product-img{background:linear-gradient(135deg,#fee2e2,#f87171);}
+.products-grid .product-card:nth-child(6) .product-img{background:linear-gradient(135deg,#ede9fe,#c084fc);}
+
+/* WHY */
+#why{background:var(--cream2);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.why-card{
+  background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px 24px;
+  transition:all 0.4s var(--ease-luxury);position:relative;overflow:hidden;
+}
+.why-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(116,198,157,0.06),transparent);
+  opacity:0;transition:opacity 0.4s;
+}
+.why-card:hover{border-color:var(--g4);box-shadow:0 12px 40px rgba(64,145,108,0.12);transform:translateY(-4px);}
+.why-card:hover::before{opacity:1;}
+.why-icon{width:48px;height:48px;background:var(--g5);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;transition:transform 0.35s var(--ease-luxury);}
+.why-card:hover .why-icon{transform:scale(1.1) rotate(-3deg);}
+.why-title{font-size:16px;font-weight:600;color:var(--g1);margin-bottom:8px;}
+.why-desc{font-size:13.5px;color:var(--text3);line-height:1.72;}
+
+/* PROCESS */
+#process{background:var(--g1);}
+#process .section-label{color:var(--g4);}
+#process .section-title{color:#fff;}
+#process .section-sub{color:rgba(255,255,255,0.5);}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.process-steps::before{content:'';position:absolute;top:31px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,var(--g4),transparent);z-index:0;}
+.process-step{text-align:center;padding:0 16px;position:relative;z-index:1;}
+.process-num{
+  width:62px;height:62px;border-radius:50%;
+  background:var(--g2);border:2px solid var(--g4);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  font-family:var(--ff);font-size:20px;color:var(--gold2);
+  transition:all 0.4s var(--ease-luxury);
+}
+.process-step:hover .process-num{background:var(--gold2);color:var(--g1);transform:scale(1.12);border-color:var(--gold3);}
+.process-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;}
+.process-desc{font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;}
+
+/* COUNTRIES */
+#countries{background:var(--warm);}
+.map-container{
+  border-radius:20px;overflow:hidden;
+  background:linear-gradient(165deg,#e6f4ee,#cceedd);
+  border:1px solid rgba(64,145,108,0.2);
+  box-shadow:0 16px 48px rgba(26,60,46,0.08);
+  position:relative;margin-bottom:32px;
+  padding:20px 12px 28px;
+}
+.map-container svg{width:100%;height:auto;display:block;}
+.map-title-row{display:flex;align-items:center;justify-content:space-between;padding:0 8px 14px;flex-wrap:wrap;gap:8px;}
+.map-title-text{font-family:var(--ff);font-size:17px;color:var(--g1);}
+.map-container .map-legend{display:flex;align-items:center;gap:20px;font-size:12px;color:var(--text3);flex-wrap:wrap;}
+.map-legend-item{display:flex;align-items:center;gap:6px;}
+.map-legend-item .map-legend-dot{width:10px;height:10px;border-radius:50%;}
+.countries-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.country-chip{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--border);border-radius:100px;
+  padding:8px 16px;font-size:13px;font-weight:500;color:var(--text2);
+  transition:all 0.32s var(--ease-luxury);
+}
+.country-chip:hover{border-color:var(--g3);color:var(--g1);background:var(--g5);transform:translateY(-3px);box-shadow:0 6px 16px rgba(64,145,108,0.12);}
+.country-flag{font-size:17px;}
+.land{fill:#c8e8d4;stroke:#fff;stroke-width:0.4;}
+.land-served{fill:var(--g2);stroke:#fff;stroke-width:0.5;transition:fill 0.2s;}
+.land-served:hover{fill:var(--g3);}
+.land-india{fill:var(--gold2);stroke:#fff;stroke-width:0.5;}
+.map-dot{fill:var(--gold2);opacity:0;animation:mapDotPulse 2.4s ease-in-out infinite;}
+@keyframes mapDotPulse{0%,100%{opacity:0.9;r:3;}50%{opacity:0.4;r:5;}}
+.map-dot-ring{fill:none;stroke:var(--gold2);stroke-width:1.2;opacity:0;animation:mapRingPulse 2.4s ease-in-out infinite;}
+@keyframes mapRingPulse{0%{opacity:0.7;r:4;}100%{opacity:0;r:10;}}
+.origin-dot{fill:var(--gold2);}
+.origin-ring{fill:none;stroke:var(--gold2);stroke-width:1.5;animation:originRing 2s ease-out infinite;}
+@keyframes originRing{0%{opacity:0.9;r:5;}100%{opacity:0;r:14;}}
+.export-line{
+  stroke:var(--gold2);stroke-width:0.6;fill:none;opacity:0.38;stroke-dasharray:4 3;
+  animation:mapExportFlow 4.5s linear infinite;
+}
+@keyframes mapExportFlow{to{stroke-dashoffset:-14;}}
+@media (prefers-reduced-motion: reduce){
+  #countries .map-dot,#countries .map-dot-ring,#countries .origin-ring,#countries .export-line{animation:none !important;}
+  #countries .map-dot{opacity:0.9;}
+  #countries .map-dot-ring{opacity:0;}
+  #countries .export-line{opacity:0.32;}
+}
+
+/* CERTIFICATIONS */
+#certs{background:var(--cream2);}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cert-card{
+  background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 20px;
+  text-align:center;transition:all 0.4s var(--ease-luxury);
+}
+.cert-card:hover{border-color:var(--gold2);box-shadow:0 10px 32px rgba(212,160,23,0.12);transform:translateY(-4px);}
+.cert-icon{font-size:32px;margin-bottom:12px;display:block;transition:transform 0.35s var(--ease-luxury);}
+.cert-card:hover .cert-icon{transform:scale(1.12);}
+.cert-name{font-size:14px;font-weight:700;color:var(--g1);margin-bottom:4px;}
+.cert-desc{font-size:12px;color:var(--text3);}
+.cert-badge{display:inline-block;margin-top:10px;background:var(--g5);color:var(--g2);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;}
+
+/* SEASONAL */
+#seasonal{background:var(--warm);}
+.season-table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border);}
+.season-table{width:100%;border-collapse:collapse;}
+.season-table th{padding:13px 12px;font-size:11.5px;font-weight:600;text-align:center;background:var(--g1);color:rgba(255,255,255,0.65);}
+.season-table th:first-child{text-align:left;color:#fff;}
+.season-table td{padding:12px 10px;border-bottom:1px solid var(--border);font-size:13.5px;}
+.season-table td:first-child{font-weight:600;color:var(--g1);white-space:nowrap;}
+.season-table tr:last-child td{border-bottom:none;}
+.season-table tr:nth-child(even) td{background:var(--cream);}
+.avail{width:26px;height:26px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.avail.yes{background:var(--g5);}
+.avail.peak{background:var(--gold2);}
+.avail.no{background:#eee;opacity:0.3;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--cream2);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px;
+  transition:all 0.4s var(--ease-luxury);
+}
+.testi-card:hover{box-shadow:0 16px 48px rgba(26,60,46,0.1);transform:translateY(-5px);border-color:var(--g4);}
+.testi-quote-mark{font-family:var(--ff);font-size:60px;color:var(--g5);line-height:1;margin-bottom:-10px;}
+.testi-text{font-size:14px;color:var(--text2);line-height:1.82;margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px;flex-shrink:0;}
+.testi-name{font-size:14px;font-weight:600;color:var(--g1);}
+.testi-role{font-size:12px;color:var(--text3);}
+.testi-flag{font-size:18px;margin-left:auto;}
+.testi-stars{color:var(--gold2);font-size:13px;margin-bottom:14px;letter-spacing:2px;}
+
+/* FOUNDER — updated for two photos */
+#founder{background:linear-gradient(135deg,var(--g1) 0%,#1e4d38 100%);}
+#founder .section-label{color:var(--g4);}
+.founder-grid{
+  display:grid;
+  grid-template-columns:auto auto 1fr;
+  gap:36px;
+  align-items:start;
+}
+.founder-photo{
+  width:200px;height:260px;border-radius:20px;flex-shrink:0;
+  background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.13);
+  display:block;overflow:hidden;padding:0;
+  transition:all 0.4s var(--ease-luxury);
+}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;}
+.founder-photo:hover{background:rgba(255,255,255,0.1);border-color:rgba(212,160,23,0.4);}
+/* Name label under each photo */
+.founder-photo-col{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.founder-photo-label{
+  font-family:var(--ff);font-size:13px;color:rgba(255,255,255,0.65);
+  font-style:italic;text-align:center;letter-spacing:0.01em;line-height:1.4;
+}
+.founder-photo-label strong{
+  display:block;font-size:14px;color:var(--gold3);
+  font-style:italic;margin-bottom:1px;
+}
+.founder-photo-label span{
+  display:block;font-size:11px;color:rgba(255,255,255,0.4);
+  font-family:var(--fs);font-style:normal;letter-spacing:0.5px;
+}
+.founder-msg{font-family:var(--ff);font-size:clamp(17px,2.4vw,24px);color:#fff;font-style:italic;line-height:1.65;margin-bottom:24px;}
+.founder-msg em{color:var(--gold2);font-style:normal;}
+.founder-sig{font-size:15px;color:rgba(255,255,255,0.6);}
+.founder-sig strong{color:var(--gold3);display:block;font-family:var(--ff);font-size:19px;font-style:italic;margin-bottom:2px;}
+
+/* CONTACT */
+#contact{background:var(--cream2);}
+.contact-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:start;
+  max-width:900px;
+  margin:0 auto;
+}
+.contact-info{}
+.contact-info-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--border);
+  transition:all 0.3s var(--ease-luxury);
+}
+.contact-info-item:last-child{border-bottom:none;}
+.contact-info-item:hover{padding-left:4px;}
+.contact-info-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--g5);display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;margin-top:1px;
+  transition:background 0.3s,transform 0.3s var(--ease-luxury);
+}
+.contact-info-item:hover .contact-info-icon{background:var(--g4);transform:scale(1.08);}
+.contact-info-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.contact-info-value{font-size:14px;color:var(--text2);font-weight:500;}
+.contact-info-value a{color:var(--g2);text-decoration:none;transition:color 0.2s;}
+.contact-info-value a:hover{color:var(--g1);}
+.contact-form-box{
+  background:#fff;border:1px solid var(--border);border-radius:22px;
+  padding:32px 28px;
+  box-shadow:0 4px 32px rgba(26,60,46,0.06);
+  transition:box-shadow 0.4s;
+}
+.contact-form-box:hover{box-shadow:0 8px 48px rgba(26,60,46,0.1);}
+.contact-form-box h3{font-family:var(--ff);font-size:22px;color:var(--g1);margin-bottom:22px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.form-field label{font-size:11.5px;font-weight:600;color:var(--text3);letter-spacing:0.5px;}
+.form-input{
+  width:100%;padding:12px 15px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-size:14px;font-family:var(--fs);
+  background:var(--cream);color:var(--text);
+  outline:none;
+  transition:border-color 0.3s var(--ease-luxury),box-shadow 0.3s,background 0.3s;
+  -webkit-appearance:none;
+}
+.form-input:focus{
+  border-color:var(--g3);
+  box-shadow:0 0 0 3px rgba(64,145,108,0.1);
+  background:#fff;
+}
+.form-input:hover:not(:focus){border-color:rgba(26,60,46,0.25);}
+textarea.form-input{resize:none;}
+.form-submit{
+  display:flex;flex-direction:column;gap:10px;margin-top:4px;
+}
+.form-submit .btn{
+  width:100%;justify-content:center;
+  padding:14px 20px;font-size:14px;border-radius:12px;
+  letter-spacing:0.02em;
+}
+.form-guarantee{
+  text-align:center;font-size:12px;color:var(--text3);
+  display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;
+}
+
+/* FOOTER */
+footer{background:var(--g1);color:rgba(255,255,255,0.65);padding:60px 5vw 28px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px;}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.footer-logo-icon{width:36px;height:36px;background:var(--g2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.footer-logo-text{font-family:var(--ff);font-size:15px;color:#fff;}
+.footer-tagline{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.45);max-width:230px;}
+.footer-h{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g4);margin-bottom:14px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:13.5px;transition:color 0.25s,padding-left 0.25s;}
+.footer-links a:hover{color:var(--gold3);padding-left:4px;}
+.footer-contact-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.footer-bottom-text{font-size:12px;color:rgba(255,255,255,0.3);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+.footer-bottom-links a:hover{color:rgba(255,255,255,0.6);}
+
+/* WHATSAPP FLOAT */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:200;
+  width:54px;height:54px;border-radius:50%;
+  background:#25d366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 22px rgba(37,211,102,0.4);
+  cursor:pointer;text-decoration:none;font-size:24px;
+  animation:wapulse 3s ease-in-out infinite;
+  transition:transform 0.3s var(--ease-luxury),box-shadow 0.3s;
+}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 10px 32px rgba(37,211,102,0.55);}
+@keyframes wapulse{
+  0%,100%{box-shadow:0 6px 22px rgba(37,211,102,0.35),0 0 0 0 rgba(37,211,102,0.25);}
+  50%{box-shadow:0 6px 28px rgba(37,211,102,0.45),0 0 0 12px rgba(37,211,102,0);}
+}
+
+/* LUXURY SCROLL ANIMATIONS */
+.lx{
+  opacity:0;
+  transform:translateY(36px);
+  transition:
+    opacity 0.85s var(--ease-luxury),
+    transform 0.85s var(--ease-luxury);
+  will-change:transform,opacity;
+}
+.lx.in{opacity:1;transform:translateY(0);}
+.lx-left{opacity:0;transform:translateX(-40px);transition:opacity 0.85s var(--ease-luxury),transform 0.85s var(--ease-luxury);}
+.lx-left.in{opacity:1;transform:translateX(0);}
+.lx-right{opacity:0;transform:translateX(40px);transition:opacity 0.85s var(--ease-luxury),transform 0.85s var(--ease-luxury);}
+.lx-right.in{opacity:1;transform:translateX(0);}
+.lx-scale{opacity:0;transform:scale(0.94);transition:opacity 0.85s var(--ease-luxury),transform 0.85s var(--ease-luxury);}
+.lx-scale.in{opacity:1;transform:scale(1);}
+.d1{transition-delay:0.08s;}
+.d2{transition-delay:0.16s;}
+.d3{transition-delay:0.24s;}
+.d4{transition-delay:0.32s;}
+.d5{transition-delay:0.40s;}
+.d6{transition-delay:0.48s;}
+
+.product-card.lx.in.scroll-depth,
+.why-card.lx.in.scroll-depth,
+.cert-card.lx.in.scroll-depth,
+.testi-card.lx.in.scroll-depth,
+.about-value.lx.in.scroll-depth{
+  --lift-t:1;
+  opacity:calc(0.86 + var(--lift-t) * 0.14);
+  will-change:transform,opacity;
+  transition:
+    transform 0.62s var(--ease-luxury),
+    box-shadow 0.55s var(--ease-luxury),
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+.product-card.lx.in.scroll-depth{transform:translate3d(0,calc((1 - var(--lift-t)) * 26px),0);}
+.why-card.lx.in.scroll-depth{transform:translate3d(0,calc((1 - var(--lift-t)) * 22px),0);}
+.cert-card.lx.in.scroll-depth{transform:translate3d(0,calc((1 - var(--lift-t)) * 20px),0);}
+.testi-card.lx.in.scroll-depth{transform:translate3d(0,calc((1 - var(--lift-t)) * 24px),0);}
+.about-value.lx.in.scroll-depth{transform:translate3d(0,calc((1 - var(--lift-t)) * 18px),0);}
+.product-card.lx.in.scroll-depth:hover{transform:translate3d(0,calc((1 - var(--lift-t)) * 26px - 10px),0);box-shadow:0 24px 56px rgba(26,60,46,0.13);border-color:var(--g4);}
+.why-card.lx.in.scroll-depth:hover{transform:translate3d(0,calc((1 - var(--lift-t)) * 22px - 4px),0);border-color:var(--g4);box-shadow:0 12px 40px rgba(64,145,108,0.12);}
+.cert-card.lx.in.scroll-depth:hover{transform:translate3d(0,calc((1 - var(--lift-t)) * 20px - 4px),0);border-color:var(--gold2);box-shadow:0 10px 32px rgba(212,160,23,0.12);}
+.testi-card.lx.in.scroll-depth:hover{transform:translate3d(0,calc((1 - var(--lift-t)) * 24px - 5px),0);border-color:var(--g4);box-shadow:0 16px 48px rgba(26,60,46,0.1);}
+.about-value.lx.in.scroll-depth:hover{transform:translate3d(0,calc((1 - var(--lift-t)) * 18px - 3px),0);border-color:var(--g4);box-shadow:0 8px 24px rgba(64,145,108,0.1);}
+.product-card.lx.in.scroll-depth .product-img{transform:translate3d(0,calc((1 - var(--lift-t)) * 12px),0) scale(calc(1 + (1 - var(--lift-t)) * 0.03));transition:transform 0.65s var(--ease-luxury);}
+.product-card.lx.in.scroll-depth:hover .product-img{transform:translate3d(0,calc((1 - var(--lift-t)) * 12px),0) scale(1.04);}
+.why-card.lx.in.scroll-depth .why-icon{transform:translate3d(0,calc((1 - var(--lift-t)) * 6px),0);transition:transform 0.55s var(--ease-luxury);}
+.why-card.lx.in.scroll-depth:hover .why-icon{transform:translate3d(0,calc((1 - var(--lift-t)) * 6px),0) scale(1.1) rotate(-3deg);}
+@media (prefers-reduced-motion: reduce){
+  .product-card.lx.in.scroll-depth,.why-card.lx.in.scroll-depth,.cert-card.lx.in.scroll-depth,.testi-card.lx.in.scroll-depth,.about-value.lx.in.scroll-depth{opacity:1 !important;transform:none !important;}
+  .product-card.lx.in.scroll-depth .product-img,.why-card.lx.in.scroll-depth .why-icon{transform:none !important;}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .founder-grid{grid-template-columns:1fr !important;}
+  .founder-photo-col{flex-direction:row;justify-content:center;}
+  .hero-img-side{display:none;}
+  .hero-h1{font-size:36px;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .products-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;gap:28px;}
+  .process-steps::before{display:none;}
+  .certs-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .founder-photo{width:160px;height:210px;}
+  .contact-wrapper{grid-template-columns:1fr;gap:36px;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  section{padding:70px 5vw;}
+  .products-grid,.why-grid,.stats-grid,.certs-grid{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+  .hero-stats{flex-direction:column;}
+  .hero-stat+.hero-stat{border-left:none;border-top:1px solid rgba(255,255,255,0.08);}
+  .footer-grid{grid-template-columns:1fr;}
+  .contact-form-box{padding:24px 18px;}
+  .form-row{grid-template-columns:1fr;}
+  .founder-grid{grid-template-columns:1fr !important;}
+  .founder-photo{width:100%;height:200px;}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV — logo updated to styled text matching brand -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="AZ Foodstuff Impex Private Limited" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#countries">Global Reach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://wa.me/919704791762" class="btn btn-wa" target="_blank">WhatsApp</a>
+    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circles">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Trusted Global Food Exporter</div>
+    <h1 class="hero-h1">
+      Premium <em><span id="heroWord" class="hero-word">Mangoes</span></em><br>
+      Delivered <em>Worldwide</em>
+    </h1>
+    <p class="hero-p">AZ Foodstuff Impex specializes in the export of fresh mangoes, coconuts, bananas, cherries &amp; vegetables — sourced directly from trusted Indian farmers to global markets.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-gold">Explore Products</a>
+      <a href="#contact" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);">Get a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Tons Exported Monthly</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">Countries Served</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100+</div><div class="hero-stat-label">Happy Clients</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label">Years Experience</div></div>
+    </div>
+  </div>
+  <div class="hero-img-side">
+    <div class="hero-img-box">
+      <img src="mango.jpeg" alt="Mango farm and orchards" class="hero-img" width="800" height="1000" loading="eager" decoding="async">
+    </div>
+    <div class="floating-chip c1"><span style="font-size:17px;">✅</span><div><div style="font-size:11px;font-weight:700;color:var(--g1);">Quality Certified</div></div></div>
+    <div class="floating-chip c2"><span style="font-size:17px;">🌍</span><div><div style="font-size:11px;font-weight:700;color:var(--g1);">20+ Countries</div><div style="font-size:10px;color:var(--text3);">Global Reach</div></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img lx lx-left">
+      <img src="farm_produce.jpeg" alt="Fresh farm produce" class="about-photo" width="600" height="800" loading="lazy" decoding="async">
+      <div class="about-badge"><div><div class="about-badge-num">15+</div><div class="about-badge-text">Years of Excellence<br>in Global Export</div></div><div style="margin-left:auto;font-size:26px;">🏆</div></div>
+    </div>
+    <div>
+      <div class="lx">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Bridging <em>Indian Farmers</em><br>to Global Markets</h2>
+        <p style="font-size:15px;color:var(--text3);line-height:1.85;margin-bottom:24px;">At AZ Foodstuff Impex Private Limited, we believe quality food connects the world. We specialize in the import and export of premium fruits, vegetables, and coconuts — sourced directly from trusted farmers across India.</p>
+        <p style="font-size:15px;color:var(--text3);line-height:1.85;margin-bottom:32px;">Our mission: reliable supply chains that benefit both farmers and international buyers, with a focus on freshness, timely delivery, and transparent practices.</p>
+      </div>
+      <div class="about-values">
+        <div class="about-value lx d1"><div class="about-value-icon">🌾</div><div class="about-value-title">Farm-Direct Sourcing</div><div class="about-value-desc">No middlemen. Direct from certified farms for maximum freshness and value.</div></div>
+        <div class="about-value lx d2"><div class="about-value-icon">📋</div><div class="about-value-title">International Standards</div><div class="about-value-desc">Every shipment meets global food safety and quality compliance.</div></div>
+        <div class="about-value lx d3"><div class="about-value-icon">🚢</div><div class="about-value-title">End-to-End Logistics</div><div class="about-value-desc">From packing to customs to last-mile — we handle everything.</div></div>
+        <div class="about-value lx d4"><div class="about-value-icon">🤝</div><div class="about-value-title">Bulk &amp; Custom Orders</div><div class="about-value-desc">Container loads or custom specs — tailored to your exact needs.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-cell lx"><div class="stat-num" data-count="500">0</div><div class="stat-label">Tons Exported<br>Monthly</div></div>
+    <div class="stat-cell lx d1"><div class="stat-num" data-count="20">0</div><div class="stat-label">Countries<br>Served Globally</div></div>
+    <div class="stat-cell lx d2"><div class="stat-num" data-count="100">0</div><div class="stat-label">Happy Clients<br>Worldwide</div></div>
+    <div class="stat-cell lx d3"><div class="stat-num" data-count="15">0</div><div class="stat-label">Years of Export<br>Excellence</div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header center lx">
+    <div class="section-label">What We Export</div>
+    <h2 class="section-title">Our <em>Premium Products</em></h2>
+    <p class="section-sub">Fresh, quality-assured agricultural produce sourced from India's finest farmers — delivered globally.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card lx"><div class="product-img">🥭<div class="product-img-overlay"></div><div class="product-tag">⭐ Top Export</div></div><div class="product-body"><div class="product-name">Fresh Mangoes</div><div class="product-desc">Premium varieties for global markets — direct from India's finest orchards. Available April–July.</div><div class="product-varieties"><span class="product-variety">Alphonso</span><span class="product-variety">Kesar</span><span class="product-variety">Dasheri</span><span class="product-variety">Langra</span></div></div></div>
+    <div class="product-card lx d1"><div class="product-img">🥥<div class="product-img-overlay"></div><div class="product-tag">🔥 High Demand</div></div><div class="product-body"><div class="product-name">Coconuts</div><div class="product-desc">Fresh, dried &amp; processed coconuts for food industries worldwide. Year-round availability.</div><div class="product-varieties"><span class="product-variety">Fresh</span><span class="product-variety">Dried</span><span class="product-variety">Processed</span></div></div></div>
+    <div class="product-card lx d2"><div class="product-img">🍌<div class="product-img-overlay"></div><div class="product-tag">🌿 Fresh</div></div><div class="product-body"><div class="product-name">Bananas</div><div class="product-desc">Premium quality bananas in bulk, shipped fresh worldwide with cold-chain logistics.</div><div class="product-varieties"><span class="product-variety">Cavendish</span><span class="product-variety">Robusta</span><span class="product-variety">Poovan</span></div></div></div>
+    <div class="product-card lx d1"><div class="product-img">🥦<div class="product-img-overlay"></div><div class="product-tag">🌱 Seasonal</div></div><div class="product-body"><div class="product-name">Fresh Vegetables</div><div class="product-desc">Onions, tomatoes, capsicum &amp; all seasonal vegetables. Custom grades available.</div><div class="product-varieties"><span class="product-variety">Onions</span><span class="product-variety">Tomatoes</span><span class="product-variety">Capsicum</span></div></div></div>
+    <div class="product-card lx d2"><div class="product-img">🍒<div class="product-img-overlay"></div><div class="product-tag">💎 Premium</div></div><div class="product-body"><div class="product-name">Cherries</div><div class="product-desc">Handpicked cherries from high-altitude farms. Premium export grade.</div><div class="product-varieties"><span class="product-variety">Fresh</span><span class="product-variety">Export Grade A</span></div></div></div>
+    <div class="product-card lx d3"><div class="product-img">🧅<div class="product-img-overlay"></div><div class="product-tag">📦 Bulk</div></div><div class="product-body"><div class="product-name">Dry &amp; Processed</div><div class="product-desc">Dehydrated onions, garlic, and specialty items for food processing industries globally.</div><div class="product-varieties"><span class="product-variety">Dehydrated</span><span class="product-variety">Flakes</span><span class="product-variety">Powder</span></div></div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-header center lx">
+    <div class="section-label">Our Advantage</div>
+    <h2 class="section-title">Why Choose <em>AZ Foodstuff?</em></h2>
+    <p class="section-sub">We go beyond trading — we build lasting partnerships through reliability, transparency, and excellence.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card lx"><div class="why-icon">🌾</div><div class="why-title">Farm-to-Ship Freshness</div><div class="why-desc">We source directly from certified farms, cutting out middlemen to deliver maximum freshness and better pricing to international buyers.</div></div>
+    <div class="why-card lx d1"><div class="why-icon">🚢</div><div class="why-title">End-to-End Logistics</div><div class="why-desc">We handle everything — packing, cold chain logistics, customs documentation, and last-mile delivery to your destination.</div></div>
+    <div class="why-card lx d2"><div class="why-icon">📋</div><div class="why-title">Quality Compliance</div><div class="why-desc">All products meet international food safety standards with proper certification, traceability, and phytosanitary documentation.</div></div>
+    <div class="why-card lx d3"><div class="why-icon">🌍</div><div class="why-title">Global Network</div><div class="why-desc">With buyers across 20+ countries, we have the experience and connections to serve markets in UAE, Europe, Asia, and beyond.</div></div>
+    <div class="why-card lx d4"><div class="why-icon">💼</div><div class="why-title">Bulk &amp; Custom Orders</div><div class="why-desc">Whether container loads or customized specifications, we tailor solutions precisely to your requirements.</div></div>
+    <div class="why-card lx d5"><div class="why-icon">⏱️</div><div class="why-title">24-Hour Response</div><div class="why-desc">We respond to every inquiry within 24 hours — guaranteed. Fast, transparent communication from first contact to delivery.</div></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header center lx">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title" style="color:#fff">A Seamless Journey <em style="color:var(--gold2)">Farm to Destination</em></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.5)">Four simple steps from your inquiry to successful delivery.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step lx"><div class="process-num">01</div><div class="process-title">Inquiry &amp; Quotation</div><div class="process-desc">Share requirements &amp; volume. We respond within 24 hours with a competitive quote.</div></div>
+    <div class="process-step lx d1"><div class="process-num">02</div><div class="process-title">Quality Sourcing</div><div class="process-desc">We source from trusted farms and conduct rigorous quality inspection before dispatch.</div></div>
+    <div class="process-step lx d2"><div class="process-num">03</div><div class="process-title">Packing &amp; Dispatch</div><div class="process-desc">Packed to international standards with full export documentation and certificates.</div></div>
+    <div class="process-step lx d3"><div class="process-num">04</div><div class="process-title">Delivery &amp; Support</div><div class="process-desc">Real-time shipment tracking with dedicated support until safe arrival.</div></div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section id="countries">
+  <div class="section-header center lx">
+    <div class="section-label">Global Reach</div>
+    <h2 class="section-title">Serving <em>20+ Countries</em> Worldwide</h2>
+    <p class="section-sub">From the fields of India to kitchens across the globe — our produce reaches every corner of the world.</p>
+  </div>
+  <div class="map-container lx-scale lx">
+    <div class="map-title-row">
+      <div class="map-title-text">Export Destinations from India</div>
+      <div class="map-legend">
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--gold2);"></div>Origin (India)</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:var(--g2);"></div>Countries Served</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#c8e8d4;"></div>Other</div>
+      </div>
+    </div>
+    <svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="World map showing AZ Foodstuff export destinations">
+      <title>AZ Foodstuff Global Reach Map</title>
+      <rect width="900" height="440" fill="#d4eee3" rx="12"/>
+      <path class="land" d="M55,60 L90,52 L130,48 L170,55 L190,70 L200,90 L210,120 L215,150 L205,175 L195,200 L185,225 L175,240 L165,250 L150,260 L135,255 L125,245 L115,230 L105,210 L95,195 L85,175 L75,155 L65,130 L55,100 Z"/>
+      <path class="land" d="M175,28 L200,22 L220,28 L225,45 L210,55 L190,52 L178,42 Z"/>
+      <path class="land" d="M160,255 L175,260 L185,275 L180,285 L170,280 L160,270 Z"/>
+      <path class="land" d="M155,285 L175,278 L195,282 L215,295 L228,318 L232,345 L228,370 L218,390 L205,408 L192,415 L178,410 L165,395 L155,372 L148,348 L145,320 L148,298 Z"/>
+      <path class="land" d="M380,45 L400,38 L420,42 L435,52 L440,68 L435,82 L420,88 L405,90 L388,85 L375,75 L372,60 Z"/>
+      <path class="land" d="M395,28 L410,22 L420,30 L415,45 L405,50 L395,42 Z"/>
+      <path class="land" d="M368,55 L378,50 L382,62 L375,68 L365,62 Z"/>
+      <path class="land" d="M382,100 L405,92 L428,95 L448,108 L458,130 L462,158 L460,188 L452,218 L440,248 L425,272 L408,288 L392,292 L375,285 L362,265 L355,240 L352,212 L355,182 L362,155 L368,128 L374,108 Z"/>
+      <path class="land-served" d="M462,108 L490,102 L515,110 L525,128 L520,150 L508,162 L490,165 L472,158 L460,142 L458,125 Z"/>
+      <path class="land" d="M440,78 L468,72 L488,78 L492,92 L480,100 L460,102 L442,95 Z"/>
+      <path class="land" d="M558,120 L585,112 L610,118 L625,138 L628,162 L620,188 L605,205 L588,212 L570,208 L555,192 L548,170 L550,148 Z"/>
+      <path class="land-india" d="M565,128 L588,120 L608,128 L618,148 L616,170 L606,190 L590,200 L572,196 L558,182 L554,162 L558,142 Z"/>
+      <circle class="origin-ring" cx="586" cy="160" r="5"/>
+      <circle class="origin-ring" cx="586" cy="160" r="5" style="animation-delay:0.7s;"/>
+      <circle class="origin-dot" cx="586" cy="160" r="5"/>
+      <text x="586" y="218" text-anchor="middle" font-size="9" font-weight="700" fill="var(--g1)" font-family="DM Sans,sans-serif">INDIA</text>
+      <path class="land" d="M595,212 L602,208 L606,218 L600,224 L593,220 Z"/>
+      <path class="land" d="M655,130 L678,122 L695,130 L700,150 L692,168 L675,172 L658,165 L648,150 Z"/>
+      <path class="land-served" d="M672,175 L700,170 L718,178 L722,195 L710,205 L692,205 L675,198 Z"/>
+      <path class="land-served" d="M728,185 L752,180 L762,190 L758,205 L742,208 L728,200 Z"/>
+      <path class="land" d="M618,80 L655,70 L688,75 L708,90 L712,115 L700,132 L678,138 L655,135 L630,125 L615,108 L614,92 Z"/>
+      <path class="land-served" d="M732,82 L742,78 L750,86 L748,98 L738,102 L730,95 Z"/>
+      <path class="land-served" d="M710,280 L748,268 L782,272 L800,292 L802,318 L792,342 L770,358 L745,360 L720,350 L705,330 L702,308 Z"/>
+      <path class="land" d="M440,28 L520,15 L600,12 L670,20 L720,32 L740,48 L730,65 L700,72 L660,68 L620,62 L580,60 L540,58 L500,55 L465,52 L445,42 Z"/>
+      <path class="land" d="M60,28 L110,18 L155,22 L178,38 L172,52 L145,56 L115,52 L80,48 L58,42 Z"/>
+      <path class="land-served" d="M62,120 L105,112 L148,118 L160,138 L158,162 L142,175 L118,178 L90,172 L68,158 L58,138 Z"/>
+      <path class="land-served" d="M70,75 L108,68 L145,72 L155,88 L148,105 L120,110 L88,108 L65,95 Z"/>
+      <path class="land-served" d="M362,55 L375,50 L382,60 L376,70 L363,66 Z"/>
+      <path class="land-served" d="M385,62 L408,56 L422,64 L420,78 L405,84 L388,78 Z"/>
+      <path class="land-served" d="M445,225 L462,220 L472,232 L468,248 L452,252 L440,242 Z"/>
+      <path class="land-served" d="M400,335 L422,330 L438,342 L435,358 L418,365 L400,358 L390,346 Z"/>
+      <circle class="land-served" cx="688" cy="212" r="5"/>
+      <path class="land-served" d="M624,148 L635,145 L640,155 L634,162 L622,158 Z"/>
+      <path class="export-line" d="M586,160 Q530,130 500,138"/>
+      <path class="export-line" d="M586,160 Q635,175 684,192"/>
+      <path class="export-line" d="M586,160 Q490,100 395,68"/>
+      <path class="export-line" d="M586,160 Q660,220 748,315"/>
+      <path class="export-line" d="M586,160 Q400,120 115,145"/>
+      <path class="export-line" d="M586,160 Q520,195 460,238"/>
+      <path class="export-line" d="M586,160 Q660,120 738,90"/>
+      <circle class="map-dot-ring" cx="495" cy="135" r="4" style="animation-delay:0.2s;"/>
+      <circle class="map-dot" cx="495" cy="135" r="4" style="animation-delay:0.2s;"/>
+      <circle class="map-dot-ring" cx="688" cy="190" r="4" style="animation-delay:0.5s;"/>
+      <circle class="map-dot" cx="688" cy="190" r="4" style="animation-delay:0.5s;"/>
+      <circle class="map-dot-ring" cx="405" cy="70" r="4" style="animation-delay:0.8s;"/>
+      <circle class="map-dot" cx="405" cy="70" r="4" style="animation-delay:0.8s;"/>
+      <circle class="map-dot-ring" cx="370" cy="60" r="4" style="animation-delay:1.1s;"/>
+      <circle class="map-dot" cx="370" cy="60" r="4" style="animation-delay:1.1s;"/>
+      <circle class="map-dot-ring" cx="750" cy="315" r="4" style="animation-delay:1.4s;"/>
+      <circle class="map-dot" cx="750" cy="315" r="4" style="animation-delay:1.4s;"/>
+      <circle class="map-dot-ring" cx="112" cy="145" r="4" style="animation-delay:0.35s;"/>
+      <circle class="map-dot" cx="112" cy="145" r="4" style="animation-delay:0.35s;"/>
+      <circle class="map-dot-ring" cx="455" cy="238" r="4" style="animation-delay:0.65s;"/>
+      <circle class="map-dot" cx="455" cy="238" r="4" style="animation-delay:0.65s;"/>
+      <circle class="map-dot-ring" cx="738" cy="90" r="4" style="animation-delay:0.9s;"/>
+      <circle class="map-dot" cx="738" cy="90" r="4" style="animation-delay:0.9s;"/>
+      <circle class="map-dot-ring" cx="415" cy="348" r="4" style="animation-delay:1.2s;"/>
+      <circle class="map-dot" cx="415" cy="348" r="4" style="animation-delay:1.2s;"/>
+      <circle class="map-dot-ring" cx="632" cy="154" r="3" style="animation-delay:0.45s;"/>
+      <circle class="map-dot" cx="632" cy="154" r="3" style="animation-delay:0.45s;"/>
+      <text x="495" y="128" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.9)" font-family="DM Sans,sans-serif" font-weight="600">UAE</text>
+      <text x="688" y="183" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.9)" font-family="DM Sans,sans-serif" font-weight="600">MY</text>
+      <text x="112" y="138" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.9)" font-family="DM Sans,sans-serif" font-weight="600">USA</text>
+      <text x="750" y="308" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.9)" font-family="DM Sans,sans-serif" font-weight="600">AUS</text>
+      <text x="738" y="83" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.9)" font-family="DM Sans,sans-serif" font-weight="600">JP</text>
+    </svg>
+  </div>
+  <div class="countries-chips lx">
+    <div class="country-chip"><span class="country-flag">🇦🇪</span>UAE</div>
+    <div class="country-chip"><span class="country-flag">🇸🇦</span>Saudi Arabia</div>
+    <div class="country-chip"><span class="country-flag">🇶🇦</span>Qatar</div>
+    <div class="country-chip"><span class="country-flag">🇰🇼</span>Kuwait</div>
+    <div class="country-chip"><span class="country-flag">🇧🇭</span>Bahrain</div>
+    <div class="country-chip"><span class="country-flag">🇴🇲</span>Oman</div>
+    <div class="country-chip"><span class="country-flag">🇲🇾</span>Malaysia</div>
+    <div class="country-chip"><span class="country-flag">🇸🇬</span>Singapore</div>
+    <div class="country-chip"><span class="country-flag">🇮🇩</span>Indonesia</div>
+    <div class="country-chip"><span class="country-flag">🇩🇪</span>Germany</div>
+    <div class="country-chip"><span class="country-flag">🇬🇧</span>UK</div>
+    <div class="country-chip"><span class="country-flag">🇫🇷</span>France</div>
+    <div class="country-chip"><span class="country-flag">🇳🇱</span>Netherlands</div>
+    <div class="country-chip"><span class="country-flag">🇺🇸</span>USA</div>
+    <div class="country-chip"><span class="country-flag">🇨🇦</span>Canada</div>
+    <div class="country-chip"><span class="country-flag">🇦🇺</span>Australia</div>
+    <div class="country-chip"><span class="country-flag">🇯🇵</span>Japan</div>
+    <div class="country-chip"><span class="country-flag">🇿🇦</span>South Africa</div>
+    <div class="country-chip"><span class="country-flag">🇰🇪</span>Kenya</div>
+    <div class="country-chip"><span class="country-flag">🇧🇩</span>Bangladesh</div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-header center lx">
+    <div class="section-label">Quality Assurance</div>
+    <h2 class="section-title">Certified for <em>Global Standards</em></h2>
+    <p class="section-sub">Every export meets international food safety, quality, and phytosanitary requirements.</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card lx d2"><span class="cert-icon">🔬</span><div class="cert-name">Phytosanitary</div><div class="cert-desc">Plant health certificates issued by Government of India for all produce</div><div class="cert-badge">✓ Compliant</div></div>
+    <div class="cert-card lx d3"><span class="cert-icon">🌐</span><div class="cert-name">ISO Standards</div><div class="cert-desc">📸 <span style="font-size:11px;color:var(--text3)">Add cert badge image here</span></div><div class="cert-badge" style="background:var(--gold3);color:var(--g1);">In Progress</div></div>
+  </div>
+</section>
+
+<!-- SEASONAL -->
+<section id="seasonal" style="background:var(--warm);">
+  <div class="section-header center lx">
+    <div class="section-label">Plan Ahead</div>
+    <h2 class="section-title">Seasonal <em>Availability Calendar</em></h2>
+    <p class="section-sub">Know exactly when to order — plan your procurement in advance.</p>
+  </div>
+  <div class="season-table-wrap lx">
+    <table class="season-table">
+      <thead><tr><th>Product</th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th></tr></thead>
+      <tbody>
+        <tr><td>🥭 Alphonso Mango</td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail yes">✓</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail yes">✓</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td></tr>
+        <tr><td>🥥 Coconuts</td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td></tr>
+        <tr><td>🍌 Bananas</td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td></tr>
+        <tr><td>🧅 Onions</td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail yes">✓</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td></tr>
+        <tr><td>🍒 Cherries</td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail yes">✓</div></td><td><div class="avail peak">★</div></td><td><div class="avail peak">★</div></td><td><div class="avail yes">✓</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td><td><div class="avail no">—</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:20px;justify-content:center;margin-top:18px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);"><div style="width:22px;height:22px;border-radius:50%;background:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:11px;">★</div>Peak Season</div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);"><div style="width:22px;height:22px;border-radius:50%;background:var(--g5);display:flex;align-items:center;justify-content:center;font-size:11px;">✓</div>Available</div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);"><div style="width:22px;height:22px;border-radius:50%;background:#eee;opacity:0.5;display:flex;align-items:center;justify-content:center;font-size:11px;">—</div>Off Season</div>
+  </div>
+</section>
+
+<!-- FOUNDER — two directors side by side -->
+<section id="founder">
+  <div class="founder-grid">
+
+    <!-- Director 1: Shaik Azmath Ullah (left) -->
+    <div class="founder-photo-col lx lx-left">
+      <div class="founder-photo">
+        <img src="director1.jpeg" alt="Shaik Azmath Ullah, Director, AZ Foodstuff Impex" width="400" height="500" loading="lazy" decoding="async">
+      </div>
+      <div class="founder-photo-label">
+        <strong>Shaik Azmath Ullah</strong>
+        <span>Director</span>
+      </div>
+    </div>
+
+    <!-- Director 2: Zain Mirza (right of first photo) -->
+    <div class="founder-photo-col lx" style="transition-delay:0.13s;">
+      <div class="founder-photo">
+        <img src="director2.jpeg" alt="Zain Mirza, Director, AZ Foodstuff Impex" width="400" height="500" loading="lazy" decoding="async">
+      </div>
+      <div class="founder-photo-label">
+        <strong>Zain Mirza</strong>
+        <span>Director</span>
+      </div>
+    </div>
+
+    <!-- Message column -->
+    <div class="lx lx-right">
+      <div class="section-label">A Message from Our Directors</div>
+      <div class="founder-msg">"At AZ Foodstuff Impex, we don't just ship products — we deliver <em>trust</em>, consistency, and long-term partnerships. Every mango, every coconut, every vegetable carries our personal commitment to your satisfaction."</div>
+      <div class="founder-sig">
+        <strong>Shaik Azmath Ullah &amp; Zain Mirza</strong>
+        Directors, AZ Foodstuff Impex Pvt. Ltd.<br>
+        <span style="color:rgba(255,255,255,0.4);font-size:13px;">📍 Navi Mumbai, Maharashtra, India</span>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+        <a href="https://wa.me/919704791762" class="btn btn-gold" target="_blank">WhatsApp Us</a>
+        <a href="mailto:sazmath@azfoodstuff.com" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.28);">Send an Email</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="lx lx-left">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Ready to Trade<br>with <em>AZ Foodstuff?</em></h2>
+      <p style="font-size:15px;color:var(--text3);line-height:1.82;margin-bottom:32px;">Fill out the form and our team will respond within 24 hours with a personalized quote. Or reach us directly on WhatsApp for the fastest response.</p>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📍</div>
+        <div><div class="contact-info-label">Address</div><div class="contact-info-value">Navi Mumbai, Maharashtra, India</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">📞</div>
+        <div><div class="contact-info-label">Phone</div><div class="contact-info-value"><a href="tel:+919704791762">+91 97047 91762</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">✉️</div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-value"><a href="mailto:sazmath@azfoodstuff.com">sazmath@azfoodstuff.com</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">⏱️</div>
+        <div><div class="contact-info-label">Response Time</div><div class="contact-info-value">We reply within 24 hours — guaranteed</div></div>
+      </div>
+    </div>
+    <div class="lx lx-right">
+      <div class="contact-form-box">
+        <h3>Send an Inquiry</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" class="form-input" placeholder="Full name"/>
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="you@company.com"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Company</label>
+            <input type="text" class="form-input" placeholder="Company name"/>
+          </div>
+          <div class="form-field">
+            <label>Country</label>
+            <input type="text" class="form-input" placeholder="Your country"/>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Product of Interest</label>
+          <select class="form-input">
+            <option value="">Select a product…</option>
+            <option>🥭 Fresh Mangoes</option>
+            <option>🥥 Coconuts</option>
+            <option>🍌 Bananas</option>
+            <option>🥦 Fresh Vegetables</option>
+            <option>🍒 Cherries</option>
+            <option>🧅 Dry / Processed</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message / Requirements</label>
+          <textarea class="form-input" rows="3" placeholder="Quantity, specifications, delivery port…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="btn btn-primary">Send Inquiry →</button>
+          <a href="https://wa.me/919704791762" class="btn btn-wa" target="_blank">💬 WhatsApp Instead</a>
+        </div>
+        <div class="form-guarantee">
+          <span>🔒</span>
+          <span>Your information is private and never shared</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-icon">🌿</div>
+        <div class="footer-logo-text">AZ Foodstuff Impex Pvt. Ltd.</div>
+      </div>
+      <p class="footer-tagline">Your trusted global partner for premium agricultural exports — mangoes, coconuts, bananas, cherries &amp; fresh vegetables. Sourced from trusted farms, delivered with care.</p>
+    </div>
+    <div>
+      <div class="footer-h">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#countries">Global Reach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Products</div>
+      <ul class="footer-links">
+        <li><a href="#products">🥭 Mangoes</a></li>
+        <li><a href="#products">🥥 Coconuts</a></li>
+        <li><a href="#products">🍌 Bananas</a></li>
+        <li><a href="#products">🍒 Cherries</a></li>
+        <li><a href="#products">🥦 Vegetables</a></li>
+        <li><a href="#products">🧅 Processed</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Contact</div>
+      <div class="footer-contact-item"><span>📍</span>Navi Mumbai, Maharashtra, India</div>
+      <div class="footer-contact-item"><span>📞</span><a href="tel:+919704791762" style="color:rgba(255,255,255,0.55);text-decoration:none;">+91 97047 91762</a></div>
+      <div class="footer-contact-item"><span>✉️</span><a href="mailto:sazmath@azfoodstuff.com" style="color:rgba(255,255,255,0.55);text-decoration:none;">sazmath@azfoodstuff.com</a></div>
+      <div style="margin-top:14px;"><a href="https://wa.me/919704791762" class="btn btn-wa" style="font-size:12px;padding:8px 16px;" target="_blank">💬 WhatsApp Now</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-text">© 2025 AZ Foodstuff Impex Pvt. Ltd. — All Rights Reserved.</div>
+    <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919704791762" class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+// Unified scroll: progress bar, nav, hero parallax + smoothed --hero-t
+const prog = document.getElementById('scrollProgress');
+const nav = document.getElementById('mainNav');
+const hero = document.getElementById('hero');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let lastScrollY = window.scrollY;
+let scrollTicking = false;
+let heroSmoothT = 0;
+let heroSmoothRaf = null;
+const liftSmoothed = new WeakMap();
+let cardSmoothRaf = null;
+
+function heroSmoothstep01(linear) {
+  const x = Math.min(1, Math.max(0, linear));
+  return x * x * (3 - 2 * x);
+}
+
+function computeHeroTarget(y) {
+  if (!hero) return 0;
+  const h = hero.offsetHeight;
+  const range = Math.max(320, Math.min(h * 0.58, window.innerHeight * 0.62));
+  return heroSmoothstep01(y / range);
+}
+
+function scheduleHeroSmooth() {
+  if (!hero || reduceMotion.matches) return;
+  if (heroSmoothRaf == null) heroSmoothRaf = requestAnimationFrame(heroSmoothStep);
+}
+
+function heroSmoothStep() {
+  if (!hero || reduceMotion.matches) { heroSmoothRaf = null; return; }
+  const target = computeHeroTarget(window.scrollY);
+  heroSmoothT += (target - heroSmoothT) * 0.155;
+  if (Math.abs(target - heroSmoothT) < 0.0012) heroSmoothT = target;
+  hero.style.setProperty('--hero-t', heroSmoothT.toFixed(4));
+  heroSmoothRaf = Math.abs(target - heroSmoothT) > 0.0025 ? requestAnimationFrame(heroSmoothStep) : null;
+}
+
+function computeCardLiftTarget(el) {
+  const vh = window.innerHeight;
+  const rect = el.getBoundingClientRect();
+  if (rect.top > vh + 120) return 0;
+  if (rect.bottom < -100) return 1;
+  const line = rect.top + rect.height * 0.32;
+  const start = vh * 0.9, end = vh * 0.3;
+  const raw = (start - line) / (start - end);
+  return heroSmoothstep01(Math.min(1, Math.max(0, raw)));
+}
+
+function scheduleCardSmooth() {
+  if (reduceMotion.matches) return;
+  if (cardSmoothRaf == null) cardSmoothRaf = requestAnimationFrame(cardSmoothStep);
+}
+
+function cardSmoothStep() {
+  if (reduceMotion.matches) { cardSmoothRaf = null; return; }
+  const cards = document.querySelectorAll('.scroll-depth.lx.in');
+  let active = false;
+  cards.forEach((el) => {
+    const target = computeCardLiftTarget(el);
+    let s = liftSmoothed.get(el);
+    if (s === undefined) s = target;
+    s += (target - s) * 0.19;
+    if (Math.abs(target - s) < 0.005) s = target;
+    liftSmoothed.set(el, s);
+    el.style.setProperty('--lift-t', s.toFixed(4));
+    if (Math.abs(target - s) > 0.012) active = true;
+  });
+  cardSmoothRaf = active ? requestAnimationFrame(cardSmoothStep) : null;
+}
+
+function updateScrollFrame() {
+  const y = window.scrollY;
+  const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+  prog.style.width = Math.min(100, (y / maxScroll) * 100) + '%';
+  nav.classList.toggle('scrolled', y > 50);
+  if (hero) {
+    if (reduceMotion.matches) {
+      if (heroSmoothRaf) { cancelAnimationFrame(heroSmoothRaf); heroSmoothRaf = null; }
+      hero.style.setProperty('--hero-t', '0');
+    } else {
+      scheduleHeroSmooth();
+    }
+  }
+  if (reduceMotion.matches) {
+    if (cardSmoothRaf) { cancelAnimationFrame(cardSmoothRaf); cardSmoothRaf = null; }
+    document.querySelectorAll('.scroll-depth').forEach((el) => el.style.setProperty('--lift-t', '1'));
+  } else {
+    scheduleCardSmooth();
+  }
+  lastScrollY = y;
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(updateScrollFrame); }
+}, { passive: true });
+
+window.addEventListener('resize', () => {
+  lastScrollY = window.scrollY;
+  if (heroSmoothRaf) { cancelAnimationFrame(heroSmoothRaf); heroSmoothRaf = null; }
+  if (cardSmoothRaf) { cancelAnimationFrame(cardSmoothRaf); cardSmoothRaf = null; }
+  if (hero && !reduceMotion.matches) {
+    heroSmoothT = computeHeroTarget(window.scrollY);
+    hero.style.setProperty('--hero-t', heroSmoothT.toFixed(4));
+  } else if (hero) {
+    heroSmoothT = 0; hero.style.setProperty('--hero-t', '0');
+  }
+  scrollTicking = false;
+  requestAnimationFrame(updateScrollFrame);
+}, { passive: true });
+
+document.querySelectorAll('.product-card, .why-card, .cert-card, .testi-card, .about-value').forEach((el) => {
+  el.classList.add('scroll-depth');
+});
+
+updateScrollFrame();
+
+// Hero word cycling
+const words = ['Mangoes','Coconuts','Bananas','Cherries','Vegetables'];
+let wi = 0;
+const hw = document.getElementById('heroWord');
+setInterval(() => {
+  hw.style.opacity = '0';
+  hw.style.transform = 'translateY(8px)';
+  setTimeout(() => {
+    wi = (wi + 1) % words.length;
+    hw.textContent = words[wi];
+    hw.style.opacity = '1';
+    hw.style.transform = 'translateY(0)';
+  }, 380);
+}, 2400);
+
+// Luxury scroll reveal
+const lxEls = document.querySelectorAll('.lx');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('in');
+      if (e.target.classList.contains('scroll-depth')) scheduleCardSmooth();
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+lxEls.forEach(el => revealObs.observe(el));
+requestAnimationFrame(() => scheduleCardSmooth());
+
+// Animated counters
+function animCount(el, target) {
+  const dur = 1800, step = 24;
+  const inc = target / (dur / step);
+  let cur = 0;
+  const t = setInterval(() => {
+    cur = Math.min(cur + inc, target);
+    el.textContent = Math.floor(cur) + '+';
+    if(cur >= target) clearInterval(t);
+  }, step);
+}
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(n => animCount(n, parseInt(n.dataset.count)));
+      statsObs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.3});
+const statsSection = document.getElementById('stats');
+if(statsSection) statsObs.observe(statsSection);
+</script>
+
+<!-- 
+  NOTE FOR DEPLOYMENT:
+  The second director image (Zain Mirza) is referenced as "Director_img2.jpeg"
+  Place this file in the same directory as your HTML file.
+  The nav logo now renders as styled text matching the AZ Foodstuff brand colors.
+-->
+</body>
+</html>
